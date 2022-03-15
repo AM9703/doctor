@@ -1,0 +1,26 @@
+<h1>Doctor</h1>
+<%= form_with model: @doctor do |form|%>
+	<div>
+		<%= form.label :name %><br>
+		<%= form.text_field :name%><br>
+	</div>
+	<div>
+		<%= form.label :specialization %><br>
+		<%= form.text_field :specialization%><br>
+	</div>
+	<div>
+		<%= form.label :fees%><br>
+		<%= form.number_field :fees %><br>
+	</div>
+	<div>
+		<%= form.label :start_time%><br>
+		<%= form.time_field :start_time %><br>
+	</div>
+	<div>
+		<%= form.label :end_time%><br>
+		<%= form.time_field :end_time %><br>
+	</div>
+	<div>
+		<%=form.submit%>
+	</div>
+<%end%>

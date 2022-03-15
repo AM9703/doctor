@@ -1,0 +1,22 @@
+<%= form_with model: @user do |form|%>
+  <%if @user.errors.any?%>
+		<%@user.errors.full_messages.each do |message|%>
+		  <p><%=message%></p>
+		<%end%>
+  <%end%>	
+	<div>
+		<%= form.label :email %><br>
+		<%= form.email_field :email%><br>
+	</div>
+	<div>
+		<%= form.label :password %><br>
+		<%= form.password_field :password%><br>
+	</div>
+	<div>
+		<%= form.label :role%><br>
+		<%= form.select :role,["paitent" , "doctor"] %><br>
+	</div>
+	<div>
+		<%=form.submit%>
+	</div>
+<%end%>

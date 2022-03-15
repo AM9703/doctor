@@ -1,0 +1,17 @@
+<%= form_with model: @paiten do |form|%>
+	<div>
+		<%= form.label :name %><br>
+		<%= form.text_field :name%><br>
+	</div>
+	<div>
+		<%= form.label :age %><br>
+		<%= form.number_field :age%><br>
+	</div>
+	<div>
+		<%= form.label :gender%><br>
+		<%= form.select :gender,["male" , "female","other"] %><br>
+	</div>
+	<div>
+		<%=form.submit%>
+	</div>
+<%end%>
