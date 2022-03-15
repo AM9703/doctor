@@ -1,29 +1,32 @@
 class UsersController < ApplicationController
-	def index
-		@users = User.all
-	end
+  def index
+    @users = User.all
+  end
 
-	def new
-		@user = User.new
-	end
+  def new
+    @user = User.new
+  end
 
-	def create
+  def create
     @user = User.new(user_params)
     if @user.save 
-    	if @user.role == 'paiten'
-    	   redirect_to paitent_path
-    	 else @user.role == 'doctor'
-    	 	redirect_to new_doctor_path
+      if @user.patient?
+        redirect_to new_patient_path(user_id: @user.id)
+      else @user.role == 'doctor'
+        redirect_to new_doctor_path(user_id: @user.id)
       end
     else
-    	render :new    	
+      render :new      
     end
-	end
+  end
 
+  def show
+  	@user = User.find_by(params[:id])
+  end
 
-	private
+  private
 
-	def user_params
-		params.require(:user).permit(:email, :password,:role)
-	end
+  def user_params
+    params.require(:user).permit(:email, :password,:role)
+  end
 end

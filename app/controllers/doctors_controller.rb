@@ -1,20 +1,27 @@
 class DoctorsController < ApplicationController
 
   def index
-    @doctor = Doctor.all
+    @doctors = Doctor.all
   end
 
   def new
+    @user_id = params[:user_id]
     @doctor = Doctor.new
   end
 
   def create
     @doctor = Doctor.new(doctor_param)
     if @doctor.save
-      redirect_to doctor_path
+      binding.pry 
+      redirect_to doctors_path
     else
-      
+      render :new
     end
+  end
+
+  def show
+    binding.pry
+    @doctor = Doctor.find_by(params[:id])
   end
 
   private

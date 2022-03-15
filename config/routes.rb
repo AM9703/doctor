@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 # get 'users/index'
-resources :paitens
+resources :patients
 resources :users
 resources :doctors
 

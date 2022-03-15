@@ -1,3 +1,4 @@
+<h1>User's</h1>
 <%= form_with model: @user do |form|%>
   <%if @user.errors.any?%>
 		<%@user.errors.full_messages.each do |message|%>
@@ -14,7 +15,7 @@
 	</div>
 	<div>
 		<%= form.label :role%><br>
-		<%= form.select :role,["paitent" , "doctor"] %><br>
+		<%= form.select :role,["patient" , "doctor"] %><br>
 	</div>
 	<div>
 		<%=form.submit%>
