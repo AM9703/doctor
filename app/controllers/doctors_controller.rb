@@ -12,7 +12,6 @@ class DoctorsController < ApplicationController
   def create
     @doctor = Doctor.new(doctor_param)
     if @doctor.save
-      binding.pry 
       redirect_to doctors_path
     else
       render :new
@@ -20,7 +19,6 @@ class DoctorsController < ApplicationController
   end
 
   def show
-    binding.pry
     @doctor = Doctor.find_by(params[:id])
   end
 

@@ -2,8 +2,7 @@
 <%=link_to 'New Patient', new_patient_path%>
 <table>
 	<thead>
-		<tr>
-			
+		<tr>			
 			<th>Name</th>
 			<th>Age</th>
 			<th>Gender</th>
@@ -13,12 +12,10 @@
 	<tbody>
 		<% @patients.each do |patient|%>
 		<tr>
-
 			<td><%= patient.name%></td>
 			<td><%= patient.age%></td>
 			<td><%= patient.gender%></td>
-      <td><%=link_to 'View',patient%></td>
-			
+         <td><%=link_to 'View',patient%></td>
 		</tr>
 		<%end%>
 	</tbody>

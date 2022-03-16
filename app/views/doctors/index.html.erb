@@ -2,8 +2,7 @@
 <%=link_to 'New Doctor', new_doctor_path%>
 <table>
 	<thead>
-		<tr>
-			
+		<tr>			
 			<th>Name</th>
 			<th>Specialization</th>
 			<th>Fees</th>
@@ -16,15 +15,12 @@
 	<tbody>
 		<% @doctors.each do |doctor|%>
 		<tr>
-
 			<td><%= doctor.name%></td>
 			<td><%= doctor.specialization%></td>
 			<td><%= doctor.fees%></td>
-
 			<td><%= doctor.start_time%></td>
 			<td><%= doctor.end_time%></td>
-			<td><%=link_to 'View',doctor%></td>
-			
+			<td><%=link_to 'View',doctor%></td>			
 		</tr>
 		<%end%>
 	</tbody>
