@@ -1,5 +1,4 @@
 <h1>Patient's</h1>
-<%=link_to 'New Patient', new_patient_path%>
 <table>
 	<thead>
 		<tr>			
@@ -16,6 +15,8 @@
 			<td><%= patient.age%></td>
 			<td><%= patient.gender%></td>
          <td><%=link_to 'View',patient%></td>
+         <td><%=link_to 'Edit',patient%></td>
+         <td><%= link_to "Delete", patient, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %></td>
 		</tr>
 		<%end%>
 	</tbody>

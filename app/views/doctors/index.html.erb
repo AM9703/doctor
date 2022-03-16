@@ -1,5 +1,4 @@
 <h1>Doctor's</h1>
-<%=link_to 'New Doctor', new_doctor_path%>
 <table>
 	<thead>
 		<tr>			
@@ -20,7 +19,9 @@
 			<td><%= doctor.fees%></td>
 			<td><%= doctor.start_time%></td>
 			<td><%= doctor.end_time%></td>
-			<td><%=link_to 'View',doctor%></td>			
+			<td><%=link_to 'View',doctor%></td>
+			<td><%=link_to 'Edit',doctor%></td>
+			<td><%= link_to "Delete", doctor, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %></td>			
 		</tr>
 		<%end%>
 	</tbody>

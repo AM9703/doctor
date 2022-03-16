@@ -1,10 +1,10 @@
-<h1>Patient's</h1>
+<h1>Edit Patient Detail</h1>
 <%= form_with model: @patient do |form|%>
-  <%if @patient.errors.any?%>
+    <%if @patient.errors.any?%>
 		<%@patient.errors.full_messages.each do |message|%>
 		  <p><%=message%></p>
 		<%end%>
-  <%end%>	
+    <%end%>	
 	<div>
 		<%= form.label :name %><br>
 		<%= form.text_field :name%><br>
@@ -15,7 +15,7 @@
 	</div>
 	<div>
 		<%= form.label :gender%><br>
-		<%= form.select :gender,["male","female","other"] %><br>
+		<%= form.select :gender,["male" , "female","other"] %><br>
 	</div>
 	<div>
 		<%= form.hidden_field :user_id, value: @user_id %>
