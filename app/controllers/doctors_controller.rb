@@ -1,5 +1,6 @@
 class DoctorsController < ApplicationController
-   before_action :find_doctor, only: [:show, :edit, :update, :destroy]
+  before_action :find_doctor, only: [:show, :edit, :update, :destroy]
+
   def index
     @doctors = Doctor.all
   end
@@ -31,7 +32,8 @@ class DoctorsController < ApplicationController
 
   def destroy    
     @doctor.destroy
-    redirect_to doctors_path
+    flash[:success] = "The doctor  was successfully destroyed."
+    redirect_to new_user_path
   end
       
 

@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
-# get 'users/index'
-resources :patients
-resources :users
-resources :doctors
+
+  root 'dashboard#index'
+  resources :session
+  resources :patients 
+  resources :users
+  resources :doctors
 
 end

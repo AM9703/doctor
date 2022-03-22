@@ -1,0 +1,16 @@
+<h1>Login</h1>
+<div>
+  <div>
+    <%= form_with url: session_index_path, scope: :session do |f| %>
+      <div>
+        <%= f.label :email %>
+        <%= f.email_field :email%><br>
+      </div>
+      <div>
+        <%= f.label :password %>
+        <%= f.password_field :password%><br>
+      </div>
+        <%= f.submit "Log in", method: :index  %>
+        <% end %>
+  </div>
+</div>
