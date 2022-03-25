@@ -2,8 +2,12 @@ class DashboardController < ApplicationController
   before_action :log_in_user, only: [:index]
 
   def index
-    # binding.pry
-    @current_user
+    if @current_user.patient?
+      @appointments = Appointment.all
+      @doctors = Doctor.all
+    else @current_user.doctor?
+      @appointments = Appointment.all
+    end
   end
 
   private

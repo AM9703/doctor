@@ -1,0 +1,23 @@
+<h1>Take Appointment</h1>
+<%= form_with model: @appointment do |form|%>
+  <div>
+    <%= form.label :date %><br>
+    <%= form.date_field :date%><br>
+  </div>
+  <div>
+    <%= form.label :time %><br>
+    <%= form.time_field :time%><br>
+  </div>
+  
+  <div>
+    <%= form.hidden_field :doctor_id, value: @doctor_id %>
+    <%= form.hidden_field :status, value: 'pending' %>
+
+    
+  </div>
+
+  <div>
+    <%=form.submit %>
+  </div>
+
+<%end%>

@@ -3,6 +3,7 @@ class PatientsController < ApplicationController
 
   def index
     @patients = Patient.all
+    @appointments = Appointment.all
   end
 
   def new
@@ -13,7 +14,7 @@ class PatientsController < ApplicationController
   def create
     @patient = Patient.new(patient_params)
     if @patient.save
-      redirect_to patients_path
+      redirect_to new_session_path
     else
       render :new
     end
