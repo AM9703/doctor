@@ -14,6 +14,7 @@ class DashboardController < ApplicationController
 
     def log_in_user
       unless logged_in?
+        flash[:danger] = "Please log in."
         store_location
         flash[:danger] = "Please log in."
         redirect_to new_session_path

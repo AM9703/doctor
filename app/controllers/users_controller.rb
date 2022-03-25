@@ -10,20 +10,21 @@ class UsersController < ApplicationController
   end
 
   def create
-    # binding.pry
     @user = User.new(user_params)
     if @user.save     
       if @user.password == @user.password_confirmation
         if @user.patient?        
+          flash[:success] = 'paitent created'
           redirect_to new_patient_path(user_id: @user.id)
         else @user.doctor?
+          flash[:success] = 'doctor created'
           redirect_to new_doctor_path(user_id: @user.id)
         end
       else
         render :new      
       end
     else   
-    flash[:success] = "The doctor  was successfully destroyed."     
+    flash.now[:error] = "Could not save user"     
     end
   end
 

@@ -1,21 +1,26 @@
 <h1>User's</h1>
 <%= form_with model: @user do |form|%>
-  <%if @user.errors.any?%>
-    <%@user.errors.full_messages.each do |message|%>
-      <p><%=message%></p>
-    <%end%>
-  <%end%>  
+  <% if @user.errors.any? %>
+  <div id="error_explanation">
+    <h2>There were some errors:</h2>
+    <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>  
   <div>
     <%= form.label :email %><br>
-    <%= form.email_field :email%><br>
+    <%= form.email_field :email, autofocus: true%><br>
   </div>
   <div>
     <%= form.label :password %><br>
-    <%= form.password_field :password%><br>
+    <%= form.password_field :password, autofocus: true%><br>
   </div>
   <div>
     <%= form.label :password_confirmation %><br>
-    <%= form.password_field :password_confirmation%><br>
+    <%= form.password_field :password_confirmation, autofocus: true%><br>
   </div>
   <div>
     <%= form.label :role%><br>
@@ -25,3 +30,4 @@
     <%=form.submit%>
   </div>
 <%end%>
+<%= link_to "Sigup", new_session_path %>
