@@ -1,12 +1,15 @@
 class DashboardController < ApplicationController
   before_action :log_in_user, only: [:index]
+  
 
   def index
-    if @current_user.patient?
-      @appointments = Appointment.all
+    if @current_user.patient? 
+      patient = Patient.find_by(user_id: @current_user)
+      @appointments=patient.appointments
       @doctors = Doctor.all
     else @current_user.doctor?
-      @appointments = Appointment.all
+      doctor = Doctor.find_by(user_id: @current_user)
+      @appointments=doctor.appointments
     end
   end
 

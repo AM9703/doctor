@@ -14,7 +14,7 @@
         <% @appointments.each do |appointment|%>
         <td><%= appointment.date%></td>
         <td><%= appointment.time%></td>
-        <td><%= appointment.status%></td>
+        <td><%= appointment.status %></td>
         <td><%=link_to 'Complete', appointment_path(appointment, appointment: {status: 'Complete'}), method: :put%></td> 
         <td><%=link_to 'cancle', appointment_path(appointment, appointment: {status: 'cancle'}), method: :put %></td>
       </tr>

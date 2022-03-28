@@ -1,6 +1,6 @@
 class DoctorsController < ApplicationController
   before_action :find_doctor, only: [:show, :edit, :update, :destroy]
-
+  
   def index
     @doctors = Doctor.all
     @appointments = Appointment.all

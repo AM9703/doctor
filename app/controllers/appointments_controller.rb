@@ -1,8 +1,15 @@
 class AppointmentsController < ApplicationController
   before_action :app_find, only: [:show , :update ]
+  
   def index
-   @appointments = Appointment.all
-   @doctors = Doctor.all
+    if @current_user.patient?
+      patient = Patient.find_by(user_id: @current_user)
+      @appointments=patient.appointments
+      @doctors = Doctor.all
+    else @current_user.doctor?
+      doctor = Doctor.find_by(user_id: @current_user)
+      @appointments=doctor.appointments
+    end
   end
 
   def new 
@@ -15,7 +22,6 @@ class AppointmentsController < ApplicationController
       @patient = Patient.find_by_user_id @current_user.id
       @appointment = Appointment.new(appointment_params)
       @appointment.patient_id = @patient.id
-      # @patient.appointments.create(appointment_params)
       if @appointment.save
         redirect_to appointments_path
       else
@@ -37,11 +43,9 @@ class AppointmentsController < ApplicationController
   end
 
   def destroy
-    # binding.pry
     @appointment = Appointment.find_by(id: params[:id])
     @appointment.destroy
-    redirect_to root_path
-    
+    redirect_to root_path    
   end
 
   private
