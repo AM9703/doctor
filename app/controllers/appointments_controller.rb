@@ -8,7 +8,12 @@ class AppointmentsController < ApplicationController
       @doctors = Doctor.all
     else 
       doctor = Doctor.find_by(user_id: @current_user)
-      @appointments=doctor.appointments
+      if @appointments.present?
+        @appointments=doctor.appointments
+      else
+        # binding.pry
+        @app_no_records = "No-record"
+      end
     end
   end
 

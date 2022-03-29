@@ -11,15 +11,19 @@
     </thead>
     <tbody>
       <tr>
-        <%#binding.pry%>
-        <% @appointments.each do |appointment|%>
-        <td><%= appointment.date%></td>
-        <td><%= appointment.time.strftime("%I:%M %p")%></td>
-        <td><%= appointment.status %></td>
-        <td><%=link_to 'complete', appointment_status_update_path(appointment, appointment: {status: 'complete' , id: appointment.id} ), method: :put%></td> 
-        <td><%=link_to 'cancle', appointment_status_update_path(appointment, appointment: {status: 'cancle', id: appointment.id}), method: :put %></td>
-      </tr>
-      <%end%>
+        <% if @appointments.present? %>
+          <%#binding.pry%>
+          <% @appointments.each do |appointment|%>
+          <td><%= appointment.date%></td>
+          <td><%= appointment.time.strftime("%I:%M %p")%></td>
+          <td><%= appointment.status %></td>
+          <td><%=link_to 'complete', appointment_status_update_path(appointment, appointment: {status: 'complete' , id: appointment.id} ), method: :put%></td> 
+          <td><%=link_to 'cancle', appointment_status_update_path(appointment, appointment: {status: 'cancle', id: appointment.id}), method: :put %></td>
+        </tr>
+        <%end%>
+      <% else %>
+        <td colspan="5"><%= @app_no_records %></td>
+      <% end %>
     </tbody>
   </table>
 <%= link_to "Log out", new_session_path, method: :delete %>
