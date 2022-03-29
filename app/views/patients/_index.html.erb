@@ -38,10 +38,10 @@
       <tr>
         <% @appointments.each do |appointment|%>
         <td><%= appointment.date%></td>
-        <td><%= appointment.time%></td>
+        <td><%= appointment.time.strftime("%I:%M %p")%></td>
         <td><%= appointment.status%></td> 
       </tr>
       <%end%>
     </tbody>
   </table>
-<%= link_to "Log out", new_session_path %>
+<%= link_to "Log out", new_session_path, method: :delete %>

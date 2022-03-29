@@ -7,7 +7,8 @@ class DashboardController < ApplicationController
       patient = Patient.find_by(user_id: @current_user)
       @appointments=patient.appointments
       @doctors = Doctor.all
-    else @current_user.doctor?
+    else 
+      
       doctor = Doctor.find_by(user_id: @current_user)
       @appointments=doctor.appointments
     end

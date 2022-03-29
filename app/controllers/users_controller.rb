@@ -15,7 +15,7 @@ class UsersController < ApplicationController
       if @user.patient?        
         flash[:success] = 'paitent created'
         redirect_to new_patient_path(user_id: @user.id)
-      else @user.doctor?
+      else 
         flash[:success] = 'doctor created'
         redirect_to new_doctor_path(user_id: @user.id)
       end

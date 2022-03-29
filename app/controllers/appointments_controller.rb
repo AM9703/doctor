@@ -1,12 +1,12 @@
 class AppointmentsController < ApplicationController
-  before_action :app_find, only: [:show , :update ]
+  before_action :app_find, only: [:show , :update, :status_update ]
   
   def index
     if @current_user.patient?
       patient = Patient.find_by(user_id: @current_user)
       @appointments=patient.appointments
       @doctors = Doctor.all
-    else @current_user.doctor?
+    else 
       doctor = Doctor.find_by(user_id: @current_user)
       @appointments=doctor.appointments
     end
@@ -39,6 +39,17 @@ class AppointmentsController < ApplicationController
       redirect_to root_path
     else
       render :update
+    end
+  end
+
+  def status_update
+    @appointment = Appointment.find_by(id: params[:appointment][:id])
+    if params[:appointment][:status] == "complete"
+     @appointment.complete!
+      redirect_to root_path
+    else 
+      @appointment.cancle!
+      redirect_to root_path
     end
   end
 
