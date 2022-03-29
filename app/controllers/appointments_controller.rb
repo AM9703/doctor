@@ -1,5 +1,5 @@
 class AppointmentsController < ApplicationController
-  before_action :app_find, only: [:show , :update, :status_update ]
+  before_action :app_find, only: [:show , :update]
   
   def index
     if @current_user.patient?
