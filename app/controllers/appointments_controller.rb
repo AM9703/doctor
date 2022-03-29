@@ -4,8 +4,14 @@ class AppointmentsController < ApplicationController
   def index
     if @current_user.patient?
       patient = Patient.find_by(user_id: @current_user)
-      @appointments=patient.appointments
-      @doctors = Doctor.all
+      if @appointments.present?
+        @appointments=patient.appointments
+        @doctors = Doctor.all        
+      else
+        # binding.pry
+        @doctors = Doctor.all
+        @app_no_records = "No-record"
+      end
     else 
       doctor = Doctor.find_by(user_id: @current_user)
       if @appointments.present?

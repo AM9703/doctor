@@ -36,12 +36,16 @@
     </thead>
     <tbody>
       <tr>
-        <% @appointments.each do |appointment|%>
-        <td><%= appointment.date%></td>
-        <td><%= appointment.time.strftime("%I:%M %p")%></td>
-        <td><%= appointment.status%></td> 
+        <% if @appointments.present? %>
+          <% @appointments.each do |appointment|%>
+            <td><%= appointment.date%></td>
+            <td><%= appointment.time.strftime("%I:%M %p")%></td>
+            <td><%= appointment.status%></td> 
       </tr>
-      <%end%>
+          <%end%>
+        <% else %>
+          <td colspan="5"><%= @app_no_records %></td>
+        <% end %>
     </tbody>
   </table>
 <%= link_to "Log out", new_session_path, method: :delete %>
