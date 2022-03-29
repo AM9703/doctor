@@ -1,9 +1,14 @@
 class SessionController < ApplicationController
-  
+
   def index
   end
 
   def new
+   if logged_in? 
+      redirect_to root_path
+    else
+      render 'new'
+   end
   end
 
   def create
@@ -12,7 +17,6 @@ class SessionController < ApplicationController
       session[:user_id] = user.id
       redirect_to root_path 
     else
-      flash.now[:danger] = 'Invalid email/password combination'
       render 'new'
     end
   end
@@ -21,5 +25,5 @@ class SessionController < ApplicationController
     session[:user_id] = nil
     redirect_to new_session_path
   end
-  
+
 end
