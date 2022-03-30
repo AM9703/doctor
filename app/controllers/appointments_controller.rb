@@ -8,8 +8,8 @@ class AppointmentsController < ApplicationController
         @appointments=patient.appointments
         @doctors = Doctor.all        
       else
-        # binding.pry
         @doctors = Doctor.all
+        @patient = Patient.all
         @app_no_records = "No-record"
       end
     else 

@@ -1,8 +1,12 @@
-<h1>Doctor Detail</h1>
-<p><strong>Name : </strong><%=@doctor.name%></p>
-<p><strong>Specialization : </strong><%=@doctor.specialization%></p>
-<p><strong>Fees : </strong><%=@doctor.fees%></p>
-<p><strong>Start Time : </strong><%=@doctor.start_time%></p>
-<p><strong>End Time : </strong><%=@doctor.end_time%></p>
-<%=link_to 'Back',root_path%>
-<%=link_to 'Appointment', new_appointment_path%>
+<form class="row gx-3 gy-2 align-items-center  border border-1 mt-5">
+	<h1>Doctor Detail</h1>
+	<p><strong>Name : </strong><%=@doctor.name%></p>
+	<p><strong>Specialization : </strong><%=@doctor.specialization%></p>
+	<p><strong>Fees : </strong><%=@doctor.fees%></p>
+	<p><strong>Start Time : </strong><%=@doctor.start_time%></p>
+	<p><strong>End Time : </strong><%=@doctor.end_time%></p>
+	<div class="mt-1 mb-2">
+	<%=link_to 'Back',root_path, class: "btn btn-light "%>
+	<%=link_to 'Appointment', new_appointment_path , class: "btn btn-light"%>	
+	</div>
+</form>

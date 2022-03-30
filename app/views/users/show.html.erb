@@ -1,1 +1,15 @@
 <h1>User's Details</h1>
+<table class="table table-bordered table-striped table-hover">
+    <thead>
+      <tr>      
+        <th>email</th>
+      </tr>
+    </thead>
+    <tbody>  	
+      <% @user.each do |user|%>
+      <tr>
+        <td><%= user.email%></td>
+      <%end%>
+      </tr>
+    </tbody>
+  </table>

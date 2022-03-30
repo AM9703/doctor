@@ -4,13 +4,11 @@ class DashboardController < ApplicationController
 
   def index
     if @current_user.patient? 
-      # binding.pry
       patient = Patient.find_by(user_id: @current_user)
       if patient.appointments.present?
         @appointments=patient.appointments
         @doctors = Doctor.all        
       else
-        # binding.pry
         @doctors = Doctor.all
         @app_no_records = "No-record"
       end
@@ -19,7 +17,6 @@ class DashboardController < ApplicationController
       if doctor.appointments.present?
         @appointments=doctor.appointments
       else
-        # binding.pry
         @app_no_records = "No-record"
       end
     end
@@ -35,4 +32,5 @@ class DashboardController < ApplicationController
         redirect_to new_session_path
       end
     end
+
 end

@@ -1,17 +1,20 @@
-<h1>Login</h1>
-<div>
-  <div>
-    <%= form_with url: session_index_path, scope: :session do |f| %>
-      <div>
-        <%= f.label :email %>
-        <%= f.email_field :email%><br>
-      </div>
-      <div>
-        <%= f.label :password %>
-        <%= f.password_field :password%><br>
-      </div>
-        <%= f.submit "Log in", method: :index  %>
-    <% end %>
-    <%= link_to "Sign up", new_user_path %>
+<div class="row gx-3 gy-2 align-items-center  border border-1 mt-5 mx-auto">
+  <h1>Login</h1>
+  <div class="form-group  ">
+    <div>
+      <%= form_with url: session_index_path, scope: :session do |f| %>
+        <div>
+          <%= f.label :email %>
+          <%= f.email_field :email, class: "form-control form-control-xs", required: true%><br>
+        </div>
+        <div>
+          <%= f.label :password %>
+          <%= f.password_field :password, class: "form-control form-control-xs", required: true%><br>
+        </div>
+        <div class="mt-1 mb-2 " >
+          <%= f.submit "Log in" , method: :index ,class: "btn btn-primary btn"  %>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>

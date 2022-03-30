@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: [:show]
 
   def index
     @users = User.all
+    redirect_to root_path
   end
 
   def new  
@@ -10,8 +10,9 @@ class UsersController < ApplicationController
   end
 
   def create
+    # binding.pry   
     @user = User.new(user_params)
-    if @user.save     
+    if @user.save  
       if @user.patient?        
         flash[:success] = 'paitent created'
         redirect_to new_patient_path(user_id: @user.id)

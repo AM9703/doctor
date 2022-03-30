@@ -1,51 +1,55 @@
 
 <h2>Patient's</h2>
 <h4>Doctor Detail</h4>
-<table border="1px">
-  <thead>
-    <tr>      
-      <th>Name</th>
-      <th>Specialization</th>
-      <th>Fees</th>
-      <th>Start Time</th>
-      <th>End Time</th>
-    </tr>
-  </thead>
-  <tbody>  	
-    <% @doctors.each do |doctor|%>
-    <tr>
-      <td><%= doctor.name%></td>
-      <td><%= doctor.specialization%></td>
-      <td><%= doctor.fees%></td>
-      <td><%= doctor.start_time%></td>
-      <td><%= doctor.end_time%></td>
-      <td><%=link_to 'View',doctor%></td> 
-      <td><%=link_to 'Appointment', new_appointment_path(:doctor_id => doctor.id)%></td>
-    <%end%>
-    </tr>
-  </tbody>
-</table>
-<h4>Appointments</h4>
-  <table border="1px">
+<div class="col-lg-10"> 
+  <table class="table table-bordered table-striped table-hover">
     <thead>
-      <tr>
-        <th>Date</th>
-        <th>Time</th>
-        <th>Status</th>
+      <tr>      
+        <th>Name</th>
+        <th>Specialization</th>
+        <th>Fees</th>
+        <th>Start Time</th>
+        <th>End Time</th>
+        <th colspan="3" style="text-align: center;">Action</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody>  	
+      <% @doctors.each do |doctor|%>
       <tr>
-        <% if @appointments.present? %>
-          <% @appointments.each do |appointment|%>
-            <td><%= appointment.date%></td>
-            <td><%= appointment.time.strftime("%I:%M %p")%></td>
-            <td><%= appointment.status%></td> 
+        <td><%= doctor.name%></td>
+        <td><%= doctor.specialization%></td>
+        <td><%= doctor.fees%></td>
+        <td><%= doctor.start_time%></td>
+        <td><%= doctor.end_time%></td>
+        <td><%=link_to 'View',doctor%></td> 
+        <td><%=link_to 'Appointment', new_appointment_path(:doctor_id => doctor.id)%></td>
+      <%end%>
       </tr>
-          <%end%>
-        <% else %>
-          <td colspan="5"><%= @app_no_records %></td>
-        <% end %>
     </tbody>
   </table>
-<%= link_to "Log out", new_session_path, method: :delete %>
+  <h4>Appointments</h4>
+    <table class="table table-bordered table-striped table-hover">
+      <thead>
+        <tr>
+          <th>Dr.name</th>
+          <th>Date</th>
+          <th>Time</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <% if @appointments.present? %>
+            <% @appointments.each do |appointment|%>
+              <td><%= appointment.doctor.name%></td>
+              <td><%= appointment.date%></td>
+              <td><%= appointment.time.strftime("%I:%M %p")%></td>
+              <td><%= appointment.status%></td> 
+        </tr>
+            <%end%>
+          <% else %>
+            <td colspan="5"><%= @app_no_records %></td>
+          <% end %>
+      </tbody>
+    </table>
+</div>
