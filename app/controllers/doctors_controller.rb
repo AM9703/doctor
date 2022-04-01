@@ -28,7 +28,7 @@ class DoctorsController < ApplicationController
 
   def update
     @doctor.update(doctor_param)
-    redirect_to doctor_path(@doctor)
+    redirect_to root_path(@doctor)
   end
 
   def destroy    
@@ -41,7 +41,7 @@ class DoctorsController < ApplicationController
   private
 
     def doctor_param
-     params.require(:doctor).permit(:name, :specialization, :fees, :start_time, :end_time,:user_id)
+     params.require(:doctor).permit(:name, :specialization, :fees, :start_time, :end_time,:user_id, :profile_image)
     end
 
     def find_doctor

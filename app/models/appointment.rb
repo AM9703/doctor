@@ -3,6 +3,6 @@ class Appointment < ApplicationRecord
   validates :date, :time,  presence: true
   belongs_to :doctor
   belongs_to :patient
-  attribute :status, :string, default: 'pending'
+  attribute :status, :string, default: 'pending'  
   
 end

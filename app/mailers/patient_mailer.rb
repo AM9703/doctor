@@ -1,0 +1,5 @@
+class PatientMailer < ApplicationMailer
+  
+  
+
+end

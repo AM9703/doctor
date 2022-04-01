@@ -16,6 +16,7 @@ class AppointmentsController < ApplicationController
       doctor = Doctor.find_by(user_id: @current_user)
       if @appointments.present?
         @appointments=doctor.appointments
+        @patient = Patient.all
       else
         # binding.pry
         @app_no_records = "No-record"
@@ -24,6 +25,7 @@ class AppointmentsController < ApplicationController
   end
 
   def new 
+    # binding.pry
     @doctor_id = params[:doctor_id]
     @appointment = Appointment.new
   end
@@ -33,7 +35,14 @@ class AppointmentsController < ApplicationController
       @patient = Patient.find_by_user_id @current_user.id
       @appointment = Appointment.new(appointment_params)
       @appointment.patient_id = @patient.id
+      @patient_email = @current_user.email
+      doctor_id = @appointment.doctor_id
+      doctor = Doctor.find_by(id: doctor_id)
+      doctor_user_id = doctor.user_id
+      doctor_user = User.find_by(id: doctor_user_id)
+      @doctor_email = doctor_user.email
       if @appointment.save
+        AppointmentMailer.send_mail(@patient_email,@doctor_email,@patient).deliver
         redirect_to appointments_path
       else
         render :new

@@ -1,12 +1,18 @@
 <form class="row gx-3 gy-2 align-items-center  border border-1 mt-5">
-	<h1>Doctor Detail</h1>
-	<p><strong>Name : </strong><%=@doctor.name%></p>
-	<p><strong>Specialization : </strong><%=@doctor.specialization%></p>
-	<p><strong>Fees : </strong><%=@doctor.fees%></p>
-	<p><strong>Start Time : </strong><%=@doctor.start_time%></p>
-	<p><strong>End Time : </strong><%=@doctor.end_time%></p>
-	<div class="mt-1 mb-2">
-	<%=link_to 'Back',root_path, class: "btn btn-light "%>
-	<%=link_to 'Appointment', new_appointment_path , class: "btn btn-light"%>	
+	<div class="row ">
+		<div class="col-md-6">
+		  <h1>Doctor Detail</h1>
+		  <p><strong>Name : </strong><%=@doctor.name%></p>
+		  <p><strong>Specialization : </strong><%=@doctor.specialization%></p>
+		  <p><strong>Fees : </strong><%=@doctor.fees%></p>
+		  <p><strong>Start Time : </strong><%=@doctor.start_time%></p>
+		  <p><strong>End Time : </strong><%=@doctor.end_time%></p>
+		  <div class="mt-1 mb-2">
+		  <%=link_to 'Back',root_path, class: "btn btn-light "%>
+		  <%=link_to 'Appointment', new_appointment_path(:doctor_id => @doctor.id) , class: "btn btn-light"%>	
+		  </div>
+		</div>
+		<div class="col-md-2 ">	<%= image_tag @doctor.profile_image, style:"border: 1px solid; float :left; display: block; margin: auto; width: 200%;"%>
+		</div>
 	</div>
 </form>

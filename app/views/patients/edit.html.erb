@@ -1,29 +1,29 @@
-<h1>Edit Patient Detail</h1>
-<%= form_with model: @patient do |form|%>
-    <%if @patient.errors.any?%>
-    <%@patient.errors.full_messages.each do |message|%>
-      <p><%=message%></p>
-    <%end%>
-    <%end%>  
-  <div>
-    <%= form.label :name %><br>
-    <%= form.text_field :name%><br>
-  </div>
-  <div>
-    <%= form.label :age %><br>
-    <%= form.number_field :age%><br>
-  </div>
-  <div>
-    <%= form.label :gender%><br>
-    <%= form.select :gender,["male" , "female","other"] %><br>
-  </div>
-  <div>
-    <%= form.hidden_field :user_id, value: @user_id %>
-  </div>
-  <div>
-    <%=form.submit%>
-  </div>
-  <div>
-    <%=link_to 'Back',patients_path%>
-  </div>
-<%end%>
+<div class="row gx-3 gy-2 align-items-center  border border-1 mt-5 mx-auto">
+  <h1>Patient's</h1>
+  <%= form_with model: @patient do |form|%>
+    <div class=" mt-2">
+      <%= form.label :name %>
+      <%= form.text_field :name, class: "form-control "%>
+    </div>
+
+    <div class=" mt-2">
+      <%= form.label :age %>
+      <%= form.number_field :age, class: "form-control "%>
+    </div>
+
+    <div class=" mt-3 ">
+      <%= form.label :gender%>
+      <%= form.select :gender,["male","female","other"], class: "form-control " %>
+    </div>
+
+    <div class=" ">
+      <%= form.hidden_field :user_id, value: @user_id %>
+    </div>
+
+    <div class=" mt-2 mb-2">
+      <%=form.submit class: "btn btn-primary btn"%>
+    </div>
+  <%end%>
+</div>
+    
+  
