@@ -6,7 +6,8 @@ ruby '3.0.0'
 gem 'jquery-rails'
 gem 'popper_js'
 gem 'bootstrap', '~> 4.0.0'
-
+gem 'sidekiq', '>= 6.4.1'
+# gem 'redis'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.4', '>= 6.1.4.7'

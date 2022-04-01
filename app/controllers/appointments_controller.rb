@@ -42,7 +42,7 @@ class AppointmentsController < ApplicationController
       doctor_user = User.find_by(id: doctor_user_id)
       @doctor_email = doctor_user.email
       if @appointment.save
-        AppointmentMailer.send_mail(@patient_email,@doctor_email,@patient).deliver
+        SendMailWorker.perform_async(@patient_email,@doctor_email,@patient)
         redirect_to appointments_path
       else
         render :new
