@@ -64,7 +64,7 @@ class AppointmentsController < ApplicationController
     if params[:appointment][:status] == "complete"
       @patient_id = @appointment.patient_id
       @appointment.complete!
-     redirect_to :controller => 'prescription', :action => 'new', appointment_id: @appointment.id  , patient_id: @patient_id 
+     redirect_to :controller => 'prescription', :action => 'new', appointment_id: @appointment.id 
     else 
       @appointment.cancle!
       redirect_to root_path
@@ -84,7 +84,7 @@ class AppointmentsController < ApplicationController
   end
  
   def app_find
-    @appointment = Appointment.find_by(id: params[:id])
+    @appointment = Appointment.find_by(id: params[:id])    
   end
 
 end
