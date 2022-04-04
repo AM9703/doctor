@@ -9,8 +9,7 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
-  def create
-    # binding.pry   
+  def create  
     @user = User.new(user_params)
     if @user.save  
       if @user.patient?        

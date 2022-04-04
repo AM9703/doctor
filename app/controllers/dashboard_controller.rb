@@ -3,7 +3,6 @@ class DashboardController < ApplicationController
   
 
   def index
-    # binding.pry
     if @current_user.patient? 
       patient = Patient.find_by(user_id: @current_user)
       if patient.appointments.present?

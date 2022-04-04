@@ -18,14 +18,12 @@ class AppointmentsController < ApplicationController
         @appointments=doctor.appointments
         @patient = Patient.all
       else
-        # binding.pry
         @app_no_records = "No-record"
       end
     end
   end
 
   def new 
-    # binding.pry
     @doctor_id = params[:doctor_id]
     @appointment = Appointment.new
   end
@@ -50,8 +48,7 @@ class AppointmentsController < ApplicationController
     end
   end
 
-  def show
-    
+  def show    
   end
 
   def update
@@ -65,8 +62,9 @@ class AppointmentsController < ApplicationController
   def status_update
     @appointment = Appointment.find_by(id: params[:appointment][:id])
     if params[:appointment][:status] == "complete"
-     @appointment.complete!
-      redirect_to root_path
+      @patient_id = @appointment.patient_id
+      @appointment.complete!
+     redirect_to :controller => 'prescription', :action => 'new', appointment_id: @appointment.id  , patient_id: @patient_id 
     else 
       @appointment.cancle!
       redirect_to root_path

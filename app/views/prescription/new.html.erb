@@ -1,0 +1,19 @@
+<div class="row gx-3 gy-2 align-items-center  border border-1 mt-5 mx-auto">
+  <h1>Prescription </h1>
+  <%= form_with model: @prescription,url: prescription_index_path  do |form|%>
+    <div class=" mt-2">
+      <%= form.label :prescription %>
+      <%= form.text_field :prescription, class: "form-control ", required: true%>
+    </div>
+
+    <div>
+      <%= form.hidden_field :patient_id, value: @patient_id %>
+      <%= form.hidden_field :appointment_id, value: @appointment_id %>
+    </div>
+
+    <div class=" mt-2 mb-2">
+      <%=form.submit class: "btn btn-primary btn"%>
+    </div>
+  <%end%>
+</div>
+    
