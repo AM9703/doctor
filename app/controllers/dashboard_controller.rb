@@ -7,7 +7,7 @@ class DashboardController < ApplicationController
       patient = Patient.find_by(user_id: @current_user)
       if patient.appointments.present?
         @appointments=patient.appointments
-        @doctors = Doctor.all        
+        @doctors = Doctor.all      
       else
         @doctors = Doctor.all
         @app_no_records = "No-record"

@@ -21,8 +21,8 @@
         <td><%= doctor.fees%></td>
         <td><%= doctor.start_time%></td>
         <td><%= doctor.end_time%></td>
-        <td><%=link_to 'View',doctor%></td> 
-        <td><%=link_to 'Appointment', new_appointment_path(:doctor_id => doctor.id)%></td>
+        <td><%=link_to 'View',doctor,class: "btn btn-outline-dark " %></td> 
+        <td><%=link_to 'Appointment', new_appointment_path(:doctor_id => doctor.id),class: "btn btn-outline-dark" %></td>
       <%end%>
       </tr>
     </tbody>
@@ -46,7 +46,7 @@
               <td><%= appointment.date%></td>
               <td><%= appointment.time.strftime("%I:%M %p")%></td>
               <td><%= appointment.status%></td> 
-              <td><%=link_to 'View', prescription_path(appointment.id)%></td> 
+              <td><%=link_to 'View', prescription_path(appointment.id),class: "btn btn-outline-dark" %></td> 
         </tr>
             <%end%>
           <% else %>

@@ -17,8 +17,23 @@ class PrescriptionController < ApplicationController
     end
   end
 
+  def edit
+  	@prescription = Appointment.find_by(id: params[:id]).prescription
+    @prescription = Prescription.find_by(id: @prescription)
+    @appointment_id = @prescription.appointment_id
+  end
+
+  def update
+  	@prescription = Prescription.find_by(id: params[:id])
+  	if @prescription.update(prescription_params)
+  	  redirect_to root_path(@prescription)
+    else
+    	render :edit
+  	end
+  end
+
   def show
-    @prescription = Appointment.find_by(id: params[:id]).prescriptions
+    @prescription = Appointment.find_by(id: params[:id]).prescription
     @prescription = Prescription.find_by(id: @prescription)
   end
 

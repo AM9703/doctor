@@ -10,15 +10,15 @@
       </ul>
       <ul  class="nav nav-pills pull-right"> 
         <%if @current_user.present?%>
-          <li><%= link_to "Logout", session_logout_path(@current_user.id) ,  method: :delete , class: "btn btn " %></li>
+          <li><%= link_to "Logout", session_logout_path(@current_user.id) ,  method: :delete , class: "btn btn-outline-dark " %></li>
         <%elsif current_page?(new_doctor_path)%>
-          <li><%= link_to "Login", new_session_path,class: "btn btn "%></li>
+          <li><%= link_to "Login", new_session_path,class: "btn btn-outline-dark"%></li>
         <%elsif current_page?(new_patient_path)%>
-          <li><%= link_to "Login", new_session_path,class: "btn btn "%></li>
+          <li><%= link_to "Login", new_session_path,class: "btn btn-outline-dark"%></li>
         <%elsif current_page?(new_user_path)%>
-          <li><%= link_to "Login", new_session_path,class: "btn btn "%></li>
+          <li><%= link_to "Login", new_session_path,class: "btn btn-outline-dark "%></li>
         <%else%>
-          <li> <%= link_to "Sign up", new_user_path,class: "btn btn "%></li> 
+          <li> <%= link_to "Sign up", new_user_path,class: "btn btn-outline-dark "%></li> 
         <%end%>  
       </ul>
     </div>

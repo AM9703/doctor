@@ -7,7 +7,8 @@
         <th>Date</th>
         <th>Time</th>
         <th>Status</th>
-        <th colspan="4" style="text-align: center;">Action</th>
+        <th colspan="3" style="text-align: center;">Action</th>
+        <th >Prescription</th>
       </tr>
     </thead>
     <tbody>
@@ -18,9 +19,10 @@
           <td><%= appointment.date%></td>
           <td><%= appointment.time.strftime("%I:%M %p")%></td>
           <td><%= appointment.status %></td>
-          <td><%=link_to 'View', patient_path(appointment.patient_id)%></td>
-          <td><%=link_to 'complete', appointment_status_update_path(appointment, appointment: {status: 'complete' , id: appointment.id} ), method: :put,class: "btn btn-primary "%></td> 
-          <td><%=link_to 'cancle', appointment_status_update_path(appointment, appointment: {status: 'cancle', id: appointment.id}), method: :put,class: "btn btn-primary " %></td>
+          <td><%=link_to 'View', patient_path(appointment.patient_id),class: "btn btn-outline-dark " %></td>
+          <td><%=link_to 'complete', appointment_status_update_path(appointment, appointment: {status: 'complete' , id: appointment.id} ), method: :put,class: "btn btn-outline-dark  "%></td> 
+          <td><%=link_to 'cancle', appointment_status_update_path(appointment, appointment: {status: 'cancle', id: appointment.id}), method: :put,class: "btn btn-outline-dark" %></td>
+          <td><%= link_to 'Send Prescription' ,edit_prescription_path(appointment.id,@prescription), class: "btn btn-outline-dark "%></td>
       </tr>
           <%end%>
         <% else %>

@@ -1,0 +1,20 @@
+<div class="row gx-3 gy-2 align-items-center  border border-1 mt-5 mx-auto">
+  <h1>Prescription Update</h1>
+  <%= form_with model: @prescription,url: prescription_path(@prescription.id,@appointment_id)  do |form|%>
+    <div class=" mt-2">
+      <%= form.label :prescription %>
+      <%= form.text_field :prescription, class: "form-control ", required: true%>
+    </div>
+
+    <div>
+      <%= form.hidden_field :appointment_id, value: @appointment_id %>
+    </div>
+
+    <div class=" mt-2 mb-2">
+      <%=form.submit class: "btn btn-primary "%>
+      <%=link_to 'Back',root_path, class: "btn btn-primary "%>  
+    </div>
+
+  <%end%>
+</div>
+    
