@@ -17,3 +17,4 @@ import $ from 'jquery';
 global.$ = jQuery;
 
 import "bootstrap";
+import "@hotwired/turbo-rails"

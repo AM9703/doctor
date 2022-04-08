@@ -22,7 +22,7 @@
           <td><%=link_to 'View', patient_path(appointment.patient_id),class: "btn btn-outline-dark " %></td>
           <td><%=link_to 'complete', appointment_status_update_path(appointment, appointment: {status: 'complete' , id: appointment.id} ), method: :put,class: "btn btn-outline-dark  "%></td> 
           <td><%=link_to 'cancle', appointment_status_update_path(appointment, appointment: {status: 'cancle', id: appointment.id}), method: :put,class: "btn btn-outline-dark" %></td>
-          <td><%= link_to 'Send Prescription' ,edit_prescription_path(appointment.id,@prescription), class: "btn btn-outline-dark "%></td>
+          <td><%= link_to 'Update Prescription' ,edit_prescription_path(appointment.id,@prescription), class: "btn btn-outline-dark "%></td>
       </tr>
           <%end%>
         <% else %>
