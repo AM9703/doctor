@@ -12,7 +12,10 @@
       <%=link_to 'Appointment', new_appointment_path(:doctor_id => @doctor.id) , class: "btn btn-outline-dark"%>  
       </div>
     </div>
-    <div class="col-md-2 ">  <%= image_tag @doctor.profile_image, style:"border: 1px solid; float :left; display: block; margin: auto; width: 200%;"%>
+    <div class="col-md-2 "> 
+    <% if @doctor.profile_image.attached? %>
+     <%= image_tag @doctor.profile_image, style:"border: 1px solid; float :left; display: block; margin: auto; width: 200%;"%>
+     <% end %>
     </div>
   </div>
 </form>

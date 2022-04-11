@@ -2,9 +2,7 @@ class DoctorsController < ApplicationController
   before_action :find_doctor, only: [:show, :edit, :update, :destroy]
   
   def index
-    @doctors = Doctor.all
-    @appointments = Appointment.all
-  
+    @doctors = Doctor.all  
   end
 
   def new
@@ -28,16 +26,10 @@ class DoctorsController < ApplicationController
   end
 
   def update
-    @doctor.update(doctor_param)
-    redirect_to root_path(@doctor)
   end
 
   def destroy    
-    @doctor.destroy
-    flash[:success] = "The doctor  was successfully destroyed."
-    redirect_to new_user_path
-  end
-      
+  end      
 
   private
 

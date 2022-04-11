@@ -13,10 +13,8 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save  
       if @user.patient?        
-        flash[:success] = 'paitent created'
         redirect_to new_patient_path(user_id: @user.id)
       else 
-        flash[:success] = 'doctor created'
         redirect_to new_doctor_path(user_id: @user.id)
       end
     else
@@ -28,19 +26,16 @@ class UsersController < ApplicationController
   	@user = User.find_by(id: params[:id])
     @current_user = current_user
     @rooms = Room.public_rooms
-    # binding.pry 
     @users = User.all_except(@current_user)
     @room = Room.new
     @message = Message.new
     @room_name = get_name(@user, @current_user)
     @single_room = Room.where(name: @room_name).first || Room.create_private_room([@user, @current_user], @room_name)
     @messages = @single_room.messages
-
     render "rooms/index"
   end
 
-  def destroy
-    
+  def destroy    
   end
 
   private

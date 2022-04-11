@@ -1,4 +1,5 @@
 class PrescriptionController < ApplicationController
+  
   def index
     @prescription = Prescription.all  
   end
@@ -11,6 +12,7 @@ class PrescriptionController < ApplicationController
   def create
     @prescription = Prescription.new(prescription_params)
     if @prescription.save
+      flash[:success] = "Prescription send!"
       redirect_to root_path
     else
       render :new
@@ -19,13 +21,18 @@ class PrescriptionController < ApplicationController
 
   def edit
     @prescription = Appointment.find_by(id: params[:id]).prescription
-    @prescription = Prescription.find_by(id: @prescription)
-    @appointment_id = @prescription.appointment_id
+    if @prescription.present?
+      @prescription = Prescription.find_by(id: @prescription)
+      @appointment_id = @prescription.appointment_id
+    else
+      redirect_to root_path
+    end
   end
 
   def update
     @prescription = Prescription.find_by(id: params[:id])
     if @prescription.update(prescription_params)
+      flash[:success] = "Prescription update!"
       redirect_to root_path(@prescription)
     else
       render :edit

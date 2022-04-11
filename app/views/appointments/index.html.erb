@@ -1,2 +1,7 @@
-<%= render "patients/index"%>
+<% if @current_user.patient?%>
+  <%= render "patients/index"%>
+<% else @current_user.doctor?%>
+  <%= render "doctors/index"%>
+<% end%>
+
 

@@ -1,6 +1,6 @@
 class SendMailWorker 
   include Sidekiq::Worker
-  def perform(patient_email,doctor_email,patient)
-  	AppointmentMailer.send_mail(patient_email,doctor_email,patient).deliver_now
+  def perform(patient_email,doctor_email)
+  	AppointmentMailer.send_mail(patient_email,doctor_email).deliver_now
   end
 end

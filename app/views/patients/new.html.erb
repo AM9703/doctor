@@ -1,11 +1,6 @@
 <div class="row gx-3 gy-2 align-items-center  border border-1 mt-5 mx-auto">
   <h1>Patient's</h1>
   <%= form_with model: @patient do |form|%>
-    <%if @patient.errors.any?%>
-      <%@patient.errors.full_messages.each do |message|%>
-        <p><%=message%></p>
-      <%end%>
-    <%end%>
     <div class=" mt-2">
       <%= form.label :name %>
       <%= form.text_field :name, class: "form-control ", required: true%>

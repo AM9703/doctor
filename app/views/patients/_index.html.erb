@@ -1,7 +1,11 @@
-
 <h2>Patient's</h2>
 <h4>Doctor Detail</h4>
 <div class="col-lg-10"> 
+  <% flash.each do |key, value| %>
+    <div class="<%= flash_class(key) %>">
+      <%= value %>
+    </div>
+  <% end %>
   <table class="table table-bordered table-striped table-hover">
     <thead>
       <tr>      

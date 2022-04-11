@@ -1,5 +1,10 @@
 <h2>Doctor's Appointments</h2 >
-<div class="col-lg-10">  
+<div class="col-lg-10"> 
+  <% flash.each do |key, value| %>
+    <div class="<%= flash_class(key) %>">
+      <%= value %>
+    </div>
+  <% end %> 
   <table class="table table-bordered  table-striped table-hover ">
     <thead>
       <tr>
@@ -8,7 +13,7 @@
         <th>Time</th>
         <th>Status</th>
         <th colspan="3" style="text-align: center;">Action</th>
-        <th >Prescription</th>
+        <th>Prescription</th>
       </tr>
     </thead>
     <tbody>

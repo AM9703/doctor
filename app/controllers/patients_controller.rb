@@ -26,19 +26,10 @@ class PatientsController < ApplicationController
   end
 
   def update
-    @patient.update(patient_params)
-    if @patient.update(patient_params) 
-       redirect_to patient_path(@patient)  	
-    else
-        render :edit	
-    end
   end
 
   def destroy
-    @patient.destroy
-    redirect_to patients_path
-  end
-      
+  end      
 
   private
 
