@@ -18,21 +18,27 @@ class AppointmentsController < ApplicationController
   def create
     if @current_user.patient?
       patient = Patient.find_by_user_id @current_user.id
-      @appointment = Appointment.new(doctor_id: params[:doctor_id], patient_id: patient.id)
-      @doctor = Doctor.find_by(id: @appointment.doctor_id)
-      appointment = @doctor.appointments.last
-      @appointment.date = appointment.date + 15.minutes
-      doctor_user = User.find_by(id: @doctor.user_id)
-      @patient_email = @current_user.email
-      @doctor_email = doctor_user.email 
-      if @appointment.save
-        flash[:success] = "Appointment created!"
-        SendMailWorker.perform_async(@patient_email,@doctor_email,@patient)
-        redirect_to appointments_path
+      appointment = Appointment.find_by(doctor_id: params[:doctor_id], patient_id: patient.id)
+      if appointment.present?
+        flash[:alert] = "Already have appointment"
+        redirect_to root_path
       else
-        flash[:danger] = "Appointment not created"
-        render :new
-      end     
+        @appointment = Appointment.new(doctor_id: params[:doctor_id], patient_id: patient.id)
+        @doctor = Doctor.find_by(id: @appointment.doctor_id)
+        appointment = @doctor.appointments.last
+        @appointment.date = appointment.date + 15.minutes
+        doctor_user = User.find_by(id: @doctor.user_id)
+        @patient_email = @current_user.email
+        @doctor_email = doctor_user.email 
+        if @appointment.save
+          flash[:success] = "Appointment created!"
+          SendMailWorker.perform_async(@patient_email,@doctor_email,@patient)
+          redirect_to appointments_path
+        else
+          flash[:danger] = "Appointment not created"
+          render :new
+        end
+      end    
     end
   end
 
