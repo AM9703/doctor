@@ -2,7 +2,6 @@ class DashboardController < ApplicationController
   before_action :log_in_user, only: [:index]  
 
   def index
-    # binding.pry
     if @current_user.patient?
       patient = Patient.find_by(user_id: @current_user)
       @appointments = patient.appointments

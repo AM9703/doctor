@@ -1,4 +1,5 @@
 class PaitensController < ApplicationController
+  
   def index
     @paiten = Paitent.all
   end

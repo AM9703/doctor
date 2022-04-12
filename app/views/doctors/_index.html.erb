@@ -10,7 +10,6 @@
       <tr>
         <th>patient name</th>
         <th>Date</th>
-        <th>Time</th>
         <th>Status</th>
         <th colspan="3" style="text-align: center;">Action</th>
         <th>Prescription</th>
@@ -22,7 +21,6 @@
           <% @appointments.each do |appointment|%>
           <td><%= appointment.patient.name%></td>
           <td><%= appointment.date%></td>
-          <td><%= appointment.time.strftime("%I:%M %p")%></td>
           <td><%= appointment.status %></td>
           <td><%=link_to 'View', patient_path(appointment.patient_id),class: "btn btn-outline-dark " %></td>
           <td><%=link_to 'complete', appointment_status_update_path(appointment, appointment: {status: 'complete' , id: appointment.id} ), method: :put,class: "btn btn-outline-dark  "%></td> 

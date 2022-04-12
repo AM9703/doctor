@@ -9,7 +9,7 @@
       <p><strong>End Time : </strong><%=@doctor.end_time%></p>
       <div class="mt-1 mb-2">
       <%=link_to 'Back',root_path, class: "btn btn-outline-dark "%>
-      <%=link_to 'Appointment', new_appointment_path(:doctor_id => @doctor.id) , class: "btn btn-outline-dark"%>  
+      <%=link_to 'Appointment', new_appointment_path(:doctor_id => @doctor.id) , class: "btn btn-outline-dark",:data => {:confirm => 'You want to create appointment?'}%>  
       </div>
     </div>
     <div class="col-md-2 "> 

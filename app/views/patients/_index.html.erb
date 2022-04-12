@@ -26,7 +26,7 @@
         <td><%= doctor.start_time%></td>
         <td><%= doctor.end_time%></td>
         <td><%=link_to 'View',doctor,class: "btn btn-outline-dark " %></td> 
-        <td><%=link_to 'Appointment', new_appointment_path(:doctor_id => doctor.id),class: "btn btn-outline-dark" %></td>
+        <td><%=link_to 'Appointment' ,appointments_path(:doctor_id => doctor.id), :data => {:confirm => 'You want to create appointment?'},method: :post, class: "btn btn-outline-dark" %></td>
       <%end%>
       </tr>
     </tbody>
@@ -37,7 +37,6 @@
         <tr>
           <th>Dr.name</th>
           <th>Date</th>
-          <th>Time</th>
           <th>Status</th>
           <th>Prescription</th>
         </tr>
@@ -48,7 +47,6 @@
             <% @appointments.each do |appointment|%>
               <td><%= appointment.doctor.name%></td>
               <td><%= appointment.date%></td>
-              <td><%= appointment.time.strftime("%I:%M %p")%></td>
               <td><%= appointment.status%></td> 
               <td><%=link_to 'View', prescription_path(appointment.id),class: "btn btn-outline-dark" %></td> 
         </tr>
